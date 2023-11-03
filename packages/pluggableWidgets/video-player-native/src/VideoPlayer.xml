@@ -27,6 +27,23 @@
                     <description>Repeat the video after it finishes.</description>
                 </property>
             </propertyGroup>
+            <propertyGroup caption="User Player Configuration">
+                <property key="UserEpisodeGuid" type="expression" required="true"> 
+                    <caption>Episode Guid</caption>
+                    <description>The Guid of the Episode Object - Used for updating user playback preferances</description>
+                    <returnType type="String" />
+                </property>
+                <property key="LastFrameWatched" type="expression" defaultValue="0"> 
+                    <caption>Playback Continuation</caption>
+                    <description>The timestamp in seconds of where to start the playback</description>
+                    <returnType type="String" />
+                </property>
+            </propertyGroup>
+            <propertyGroup caption="Common">
+                <systemProperty key="Name"/>
+            </propertyGroup>
+        </propertyGroup>
+        <propertyGroup caption="Looks">
             <propertyGroup caption="Display">
                 <property key="aspectRatio" type="boolean" defaultValue="true">
                     <caption>Keep aspect ratio</caption>
@@ -37,8 +54,28 @@
                     <description>Display video controls to pause, play, go fullscreen, etc.</description>
                 </property>
             </propertyGroup>
-            <propertyGroup caption="Common">
-                <systemProperty key="Name"/>
+            <propertyGroup caption="Player Style">
+                <property key="PosterURL" type="expression" required="false">
+                    <caption>Poster Src Url (optional)</caption>
+                    <description>A URL of an image that is used as a background of the player. The poster effect can only be seen before the video is played</description>
+                    <returnType type="String" />
+                </property>
+                <property key="PauseStateLogo" type="image" required="false">
+                    <caption>Pause Logo</caption>
+                    <description>The logo that is shown in the pause state of the player</description>
+                </property>
+                <property key="LoadingStateAnim" type="image" required="false">
+                    <caption>Load Animation</caption>
+                    <description>The animation that is shown when the player is loading</description>
+                </property>
+                <property key="LoadingStateAnimWidth" type="integer" defaultValue="70"> 
+                    <caption>Load Animation Width</caption>
+                    <description>Width in pixels of the loading animation</description>
+                </property>
+                <property key="LoadingStateAnimHeight" type="integer" defaultValue="70"> 
+                    <caption>Load Animation Height</caption>
+                    <description>Height in pixels of the loading Animation</description>
+                </property>
             </propertyGroup>
         </propertyGroup>
     </properties>

@@ -7,7 +7,9 @@
     "type": "git",
     "url": "https://github.com/mendix/native-widgets.git"
   },
-  "config": {},
+  "config": {
+    "projectPath": "C:/Mendix/Abyss-main"
+  },
   "packagePath": "com.mendix.widget.native",
   "scripts": {
     "start": "pluggable-widgets-tools start:native",

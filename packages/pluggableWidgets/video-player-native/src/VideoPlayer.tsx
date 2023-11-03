@@ -110,7 +110,9 @@ export function VideoPlayer(props: VideoPlayerProps<VideoStyle>): ReactElement {
         onError: () => setStatus(StatusEnum.ERROR),
         useTextureView: false,
         resizeMode: props.aspectRatio ? "contain" : "stretch",
-        onProgress: ({ currentTime }: OnProgressData) => currentTime && setCurrentPlayTime(currentTime)
+        onProgress: ({ currentTime }: OnProgressData) => currentTime && setCurrentPlayTime(currentTime),
+        poster: props.PosterURL?.value ?? undefined,
+        posterResizeMode: 'cover',
     };
 
     const isAndroid = Platform.OS === "android";
@@ -171,7 +173,11 @@ export function VideoPlayer(props: VideoPlayerProps<VideoStyle>): ReactElement {
                             onLoad={data => {
                                 setStatus(StatusEnum.READY);
                                 setVideoAspectRatio(data.naturalSize.width / data.naturalSize.height);
-                                playerRef.current?.seek(currentPlayTime);
+                                if (isAvailable(props.LastFrameWatched)) {
+                                    const timeString = props.LastFrameWatched?.value ?? currentPlayTime.toString();
+                                    const timeToSeek = parseInt(timeString);
+                                    playerRef.current?.seek(timeToSeek);
+                                }
                             }}
                             ref={playerRef}
                             style={status !== StatusEnum.READY ? { height: 0 } : styles.video}
